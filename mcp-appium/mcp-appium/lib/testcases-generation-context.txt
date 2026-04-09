@@ -1,0 +1,33 @@
+When asked to generate automation test cases for a jira ticket, the flow is as follows (Should not ask for user input till the last step):
+by using mcp tools
+1. Read the jira summary and description to understand the changes made in the feature.
+2. Look at the figma design link provided in the jira ticket to understand the UI changes
+3. Based on the changes mentioned in the jira summary and description, and the figma design, generate test cases
+4. Approval from user is needed for the generated test cases
+5. Once the test cases are approved by user, learn mobile app context
+6. Generate automation code for the approved test cases or modify existing for linked test files
+generate test cases using jira summary, description and figma image,
+don't wait for extra user input,
+test cases scope should be only for the changes mentioned in jira summary and description,
+don't create test cases for other features visible in figma design because the design will also
+have other features which are not part of the jira ticket,
+final output should be test in following format
+"Verify pay on credit banner exits on PDP", "Existing"
+"Verify overview tab on PDP", "New"
+"Verify financial services are displayed under financial tab", "Remove", "SCRUM-TC-2"
+"Verify xyz is present in overview section (this is a before test case fetched from tcms)", "Verify xyz is moved from overview to property tour section (this is a after test case generated)", "Modify", "SCRUM-TC-2"
+Existing - already exists in TCMS and no changes needed
+New - doesn't exist in TCMS and needs to be created
+Remove - to remove test cases from TCMS because it is no longer valid
+Modify - existing TCMS test case needs to be modified because of changes in the feature,
+should contains before test case from tcms and after testcase that is generated, only test cases
+existing in TCMS and if change is to be done to it should be marked as Modify
+"SCRUM-TC-2" - id of existing test case in TCMS, only for Remove and Modify test cases
+if any new test case is to be created then don't mention any id against it
+for review_testcases and update_testcases_to_tcms tool data should be in this format, strictly follow this format espcially for Modify test cases
+{"testCases":[["Verify that brochure section is visible under overview tab","Verify brochure section is removed from property tour tab","Modify","SCRUM-TC-1"],
+["Verify similar properties section is visible under over tab in pdp section","Remove","SCRUM-TC-2"],
+["Verify Project Brochure section appears above the 'Explore on map' section in Overview tab","New"]]}
+for update_testcases_to_tcms tool, send only test cases approved by user
+NOTE: keep polling continously for 10 times max till the test cases are approved by user, don't wait for user input
+Automation code has to be generated only for approved test cases

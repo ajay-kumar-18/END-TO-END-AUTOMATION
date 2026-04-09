@@ -1,0 +1,61 @@
+******** START OF GUIDELINES ********
+Use mobile-mcp.
+Navigate and explore the Housing app using the provided deeplink to validate, refine, and update the existing rough test scenarios.
+If the app cannot be navigated for a certain scenario (e.g., UI element not reachable, deeplink not loading, or navigation gets stuck), then generate the test cases based on the partial understanding achieved + standard expected Housing app behavior.
+Don't generate new test cases beyond the provided rough scenarios.
+Only modify test scenarios if there are discrepancies found during exploration.
+Each test case should be detailed and structured as per the format below.
+
+/**
+ * TEST CASE <number>:
+ * * SUMMARY:
+ *   <Short high-level explanation of what is being validated>
+ * * SEVERITY:
+ *   <Low / Medium / High / Critical>
+ * * TEST DATA:
+ *   - Deeplink: https://housing.com/in/buy/projects/page/292551-treesourus-by-chandak-group-in-malad-west
+ * * TEST STEPS:
+ *   1. <step>
+ *   2. <step>
+ *   ...
+ * * EXPECTED RESULTS:
+ *   - <expected result 1>
+ *   - <expected result 2>
+ */
+
+==========================
+EXAMPLE (follow EXACT style)
+==========================
+
+/**
+ * TEST CASE 1:
+ * * SUMMARY:
+ *   Validate visibility, order, and interaction behavior of header icons (Back, Share, Save/Shortlist, Chat) on the Project Detail Page.
+ * * SEVERITY:
+ *   High
+ * * TEST DATA:
+ *   - Deeplink: https://housing.com/in/buy/projects/page/292551-treesourus-by-chandak-group-in-malad-west
+ * * TEST STEPS:
+ *   1. Open the PDP using the provided deeplink.
+ *   2. Wait for the screen to load completely.
+ *   3. Verify the header displays icons in the following exact order (left to right):
+ *      - Back icon (far left)
+ *      - Project Name (center when applicable)
+ *      - Share icon
+ *      - Save/Shortlist icon
+ *      - Chat/Contact icon (if present in header or floating)
+ *   4. Validate that Share and Save/Shortlist icons appear adjacent to each other.
+ *   5. Tap the Share icon and verify that the system share sheet opens with available share targets.
+ *   6. Tap the Save/Shortlist icon and verify:
+ *      - Icon changes state (filled vs. unfilled)
+ *      - Property is added/removed from user’s shortlist
+ *   7. Locate the Chat/Contact icon and tap it.
+ *   8. Verify that interaction opens the expected contact flow (Developer chat screen, call options, or lead form).
+ * * EXPECTED RESULTS:
+ *   - Header icons appear in the correct order as per Housing app UI patterns.
+ *   - Share opens device share options without delay.
+ *   - Save/Shortlist toggles between saved/unsaved state with visual feedback.
+ *   - Chat/Contact opens the correct communication interface.
+ */
+
+******** END OF GUIDELINES ********

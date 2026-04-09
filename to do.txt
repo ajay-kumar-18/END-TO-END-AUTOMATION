@@ -1,0 +1,7 @@
+what is MCP
+what is cloude desktop
+what is sonnet 4.5 ?
+how to create MCP tools
+tool disp ?
+tool names ?
+https://www.npmjs.com/package/@nbakka/mcp-appium?activeTab=code
