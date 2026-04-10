@@ -5,6 +5,19 @@ node_modules/
 .env.local
 .env.production
 .env.staging
+
+# Ignore build/artifact files that are large and should not be committed
+*.apk
+
+# Ignore generated extraction and temporary folders
+__MACOSX/
+
+# Ignore large generated images
+Gemini_Generated_Image*.png
+
+# Ignore nested Node.js dependencies as a general safety net
+**/node_modules/
+
 __pycache__/
 *.pyc
 *.pyo
